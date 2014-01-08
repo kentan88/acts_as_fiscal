@@ -9,6 +9,10 @@ module ActsAsFiscal
         self.month < FY_START_MONTH ? self.year - 1 : self.year
       end
 
+      def calendar_year
+        self.year
+      end
+
       def beginning_of_financial_year
         self.change(year: self.financial_year, month: FY_START_MONTH, day: 1)
       end
@@ -20,6 +24,10 @@ module ActsAsFiscal
 
       def financial_quarter
         "Q#{( months_between / 3 ).floor + 1} #{ self.financial_year}"
+      end
+
+      def financial_months
+        (1..12).map{ |m| ((m - 1 + FY_START_MONTH) % 12.1).ceil }
       end
     end
 

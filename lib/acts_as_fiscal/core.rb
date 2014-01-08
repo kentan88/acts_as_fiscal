@@ -12,9 +12,14 @@ module ActsAsFiscal
       def beginning_of_financial_year
         self.change(year: self.financial_year, month: FY_START_MONTH, day: 1)
       end
+      alias :beginning_of_financial_q1 :beginning_of_financial_year
 
       def end_of_financial_year
         (self.beginning_of_financial_year + 1.year - 1.month).end_of_month
+      end
+
+      def financial_quarter
+        "Q#{( months_between / 3 ).floor + 1} #{ self.financial_year}"
       end
     end
 
@@ -30,5 +35,9 @@ module ActsAsFiscal
 
     private
 
+    def months_between
+      soy = self.beginning_of_financial_year
+      (self.month - soy.month) + 12 * (self.year - soy.year)
+    end
   end
 end

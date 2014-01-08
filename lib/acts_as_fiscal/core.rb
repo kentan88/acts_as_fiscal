@@ -45,7 +45,7 @@ module ActsAsFiscal
       alias :end_of_financial_q4 :end_of_financial_year
 
       def financial_quarter
-        "Q#{( months_between / 3 ).floor + 1} #{ self.financial_year}"
+        (months_between / 3 ).floor + 1
       end
 
       def financial_months

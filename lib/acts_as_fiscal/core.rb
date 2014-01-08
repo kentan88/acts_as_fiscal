@@ -21,6 +21,33 @@ module ActsAsFiscal
       def end_of_financial_year
         (self.beginning_of_financial_year + 1.year - 1.month).end_of_month
       end
+      alias :end_of_financial_q4 :end_of_financial_year
+
+
+      def end_of_financial_q1
+        self.end_of_financial_year - 9.months
+      end
+
+      def beginning_of_financial_q2
+        self.beginning_of_financial_year + 3.months
+      end
+
+      def end_of_financial_q2
+        self.end_of_financial_year - 6.months
+      end
+
+      def beginning_of_financial_q3
+        self.beginning_of_financial_year + 6.months
+      end
+
+      def end_of_financial_q3
+        self.end_of_financial_year - 3.months
+      end
+
+      def beginning_of_financial_q4
+        self.beginning_of_financial_year + 9.months
+      end
+      alias :end_of_financial_q4 :end_of_financial_year
 
       def financial_quarter
         "Q#{( months_between / 3 ).floor + 1} #{ self.financial_year}"

@@ -23,7 +23,6 @@ module ActsAsFiscal
       end
       alias :end_of_financial_q4 :end_of_financial_year
 
-
       def end_of_financial_q1
         self.end_of_financial_year - 9.months
       end

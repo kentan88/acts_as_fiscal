@@ -9,10 +9,6 @@ module ActsAsFiscal
         self.month < FY_START_MONTH ? self.year - 1 : self.year
       end
 
-      def calendar_year
-        self.year
-      end
-
       def beginning_of_financial_year
         self.change(year: self.financial_year, month: FY_START_MONTH, day: 1)
       end
